@@ -14,7 +14,7 @@ proc blake3_hasher_free*(hasher: ptr blake3_hasher)
 
 {.pop.}
 
-{.passL: "../lib/libblake3rs.a".}
+{.passL: currentSourcePath().parentDir() / "lib/libblake3rs.a".}
 
 import strutils
 import memfiles
@@ -41,6 +41,6 @@ proc hash*(fBuf: pointer, fsizeaddr:ptr uint) : string =
   result = outs.toString32.toHex
   blake3_hasher_free(hasher)
 
-proc hash*(filename: string) : string =
+proc hashfile*(filename: string) : string =
   let f = memfiles.open(filename, mode = fmRead, mappedSize = -1)
   return hash(f.mem, cast[ptr uint](f.size))
