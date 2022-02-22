@@ -1,4 +1,6 @@
-{.push header:"../lib/blake3_bindings.h".}
+import os
+
+{.push header:currentSourcePath().parentDir() / "lib/blake3_bindings.h".}
 
 type
   blake3_hasher* {.incompleteStruct.} = object
