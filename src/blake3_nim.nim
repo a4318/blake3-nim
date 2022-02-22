@@ -1,20 +1,16 @@
 import os
 
-{.push header:currentSourcePath().parentDir() / "lib/blake3_bindings.h".}
-
 type
   blake3_hasher* {.incompleteStruct.} = object
-proc blake3_hasher_new*(): ptr blake3_hasher
-proc blake3_hasher_reset*(hasher: ptr blake3_hasher)
-proc blake3_hasher_update*(hasher: ptr blake3_hasher; buf: ptr uint8;
-                           len: ptr uint)
+proc blake3_hasher_new*(): ptr blake3_hasher {.importc: "blake3_hasher_new".}
+proc blake3_hasher_reset*(hasher: ptr blake3_hasher) {.importc: "blake3_hasher_reset".}
+#proc blake3_hasher_update*(hasher: ptr blake3_hasher; buf: ptr uint8; len: ptr uint) {.importc: "blake3_hasher_update".}
 proc blake3_hasher_update*(hasher: ptr blake3_hasher; buf: pointer;
-                           len: ptr uint)
+                           len: ptr uint) {.importc: "blake3_hasher_update".}
 proc blake3_hasher_finalize*(hasher: ptr blake3_hasher;
-                             output: ptr array[32, uint8])
-proc blake3_hasher_free*(hasher: ptr blake3_hasher)
+                             output: ptr array[32, uint8]) {.importc: "blake3_hasher_finalize".}
+proc blake3_hasher_free*(hasher: ptr blake3_hasher) {.importc: "blake3_hasher_free".}
 
-{.pop.}
 
 {.passL: currentSourcePath().parentDir() / "lib/libblake3rs.a".}
 
