@@ -12,7 +12,7 @@ proc blake3_hasher_finalize*(hasher: ptr blake3_hasher;
 proc blake3_hasher_free*(hasher: ptr blake3_hasher) {.importc: "blake3_hasher_free".}
 
 
-{.passL: currentSourcePath().parentDir() / "lib/libblake3rs.a".}
+{.passL: currentSourcePath().parentDir() / "libblake3rs.a".}
 
 import strutils
 import memfiles
