@@ -5,6 +5,7 @@ author        = "a4318"
 description   = "Nim wrapper for blake3"
 license       = "MIT"
 srcDir        = "src"
+skipDirs      = @["blake3_nim", "blake3rs"]
 
 
 # Dependencies

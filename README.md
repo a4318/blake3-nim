@@ -4,8 +4,13 @@ blake3-nim is a wrapper for the [blake3](https://github.com/BLAKE3-team/BLAKE3) 
 
 To build:
 To get submodule dependencies:
+
 ```git submodule update --init --recursive```
+
 Build rust_blake3_c_bindings
+
 ```nimble cargo```
+
 Finally
+
 ```nimble build```
